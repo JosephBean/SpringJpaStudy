@@ -5,15 +5,37 @@
 	<title>테스트JPA</title>
 </head>
 <body>
-	<h1>안녕하세요.</h1>
+	<h1>추가하기</h1>
 	<form method="post" action="/save">
 		<input type="text" name="txt">
 		<input type="submit" value="추가">
 	</form>
 	<hr>
+	<h1>수정하기</h1>
+	<form method="post" action="/edit">
+		<input type="number" name="no">
+<!-- 		<input type="text" name="txt"> -->
+		<input type="text" name="txt2">
+		<input type="submit" value="수정">
+	</form>
+	<hr>
+	<h1>삭제하기</h1>
+	<form method="post" action="/del">
+		<input type="number" name="no">
+		<input type="submit" value="삭제">
+	</form>
+	<hr>
+	<h1>검색하기</h1>
+	<form method="get" action="/test">
+		<input type="text" name="txt">
+		<input type="submit" value="검색">
+	</form>
+	<hr>
 	<ul>
 		<li th:each="row : ${result}">
-			<span th:text="${row.txt}"></span>
+			<span style="color: blue;" th:text="${row.no}"></span>
+			<span style="color: green;" th:text="${row.txt}"></span>
+			<span style="color: red;" th:text="${row.txt2}"></span>
 		</li>
 	</ul>
 </body>

@@ -26,4 +26,7 @@ public class TestEntity {
 	@Column(length = 50, nullable = false)
 	private String txt;
 	
+	@Column(length = 10, nullable = true)
+	private String txt2;
+	
 }
