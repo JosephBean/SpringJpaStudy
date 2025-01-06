@@ -1,0 +1,20 @@
+<!DOCTYPE>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>테스트JPA</title>
+</head>
+<body>
+	<h1>안녕하세요.</h1>
+	<form method="post" action="/save">
+		<input type="text" name="txt">
+		<input type="submit" value="추가">
+	</form>
+	<hr>
+	<ul>
+		<li th:each="row : ${result}">
+			<span th:text="${row.txt}"></span>
+		</li>
+	</ul>
+</body>
+</html>
