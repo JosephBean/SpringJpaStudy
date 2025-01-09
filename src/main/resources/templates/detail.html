@@ -13,11 +13,11 @@
         <form th:action="@{/edit(no=${result.no})}" method="post">
             <div class="mb-3 mt-3">
               <label for="title" class="form-label">Title:</label>
-              <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required autocomplete="off" th:value="${result.title}">
+              <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required autocomplete="off" th:value="${result.title}" />
             </div>
             <div class="mb-3">
               <label for="content" class="form-label">Content:</label>
-              <input type="text" class="form-control" id="content" placeholder="Enter content" name="content" autocomplete="off" th:value="${result.content}">
+              <input type="text" class="form-control" id="content" placeholder="Enter content" name="content" autocomplete="off" th:value="${result.content}" />
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn btn-primary me-md-2" type="submit">수정</button>
