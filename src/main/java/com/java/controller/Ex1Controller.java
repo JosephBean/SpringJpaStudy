@@ -1,6 +1,7 @@
 package com.java.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,8 +58,9 @@ public class Ex1Controller {
 			@RequestParam(name = "no", required = false) Integer no,
 			Model model) {
 		if(no == null) return "redirect:/";
-		Ex1 ex1 = ex1Repository.findById(no).get();
-		model.addAttribute("result", ex1);
+		Optional<Ex1> ex1 = ex1Repository.findById(no);
+		if(ex1.isEmpty()) return "redirect:/";
+		model.addAttribute("result", ex1.get());
 		return "detail";
 	}
 	
@@ -69,10 +71,12 @@ public class Ex1Controller {
 			@RequestParam("content") String content
 			) {
 		if(no == null) return "redirect:/";
-		Ex1 ex1 = ex1Repository.findById(no).orElseThrow();
-		ex1.setTitle(title);
-		ex1.setContent(content);
-		return "redirect:/detail?no=" + ex1Repository.save(ex1).getNo();
+		Optional<Ex1> ex1 = ex1Repository.findById(no);
+		if(ex1.isEmpty()) return "redirect:/";
+		Ex1 ex = ex1.get();
+		ex.setTitle(title);
+		ex.setContent(content);
+		return "redirect:/detail?no=" + ex1Repository.save(ex).getNo();
 	}
 	
 	@GetMapping("/accept")
